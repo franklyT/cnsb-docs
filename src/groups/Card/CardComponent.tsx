@@ -21,7 +21,7 @@ export function CardComponent(props: CardComponentInterface) {
 
     return (
         <div className={styles.container}>
-            <div id={id} ref={myRef} className={styles.row} style={true ? { backgroundColor: 'rgb(250, 250, 250)' } : { backgroundColor: 'rgb(250, 250, 250)' }}>
+            <div id={id} ref={myRef} className={styles.row} style={true ? {  } : { backgroundColor: 'rgb(250, 250, 250)' }}>
                 <div style={{ width: "80%", flexDirection: "column", flexBasis: "80%", marginLeft: "auto", marginRight: "auto", alignSelf: "center", justifySelf: "center", alignContent: "center", justifyContent: "center", alignItems: "center", justifyItems: 'center' }}>
                     <HeadContainer markdownObj={markdownObj} />
                     <CopyContainer copy={copy} />
