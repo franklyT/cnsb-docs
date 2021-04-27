@@ -1,0 +1,49 @@
+.rowItem {
+    flex-basis: 80%;
+
+    // max-width: 40%;
+
+    /* Extra small devices (phones, 600px and down) */
+    @media only screen and (max-width: 1900px) {
+      // flex-basis: 40%;
+    }
+  }
+
+  .example {
+    background-color: transparent;
+  }
+
+
+  .shell {
+      background-color: rgb(43, 43, 43);
+      color: lime;
+      display: block;
+      margin-top: -1em;
+      padding-top: 1rem;
+      padding-left: 1rem;
+      padding-bottom: 0.5rem;
+  }
+
+  .shellCaret {
+      // I added this to reduce the weirdness of the wait times syncing, it looks much less strange
+        @function randomNum($min, $max) {
+            $rand: random();
+            $randomNum: $min + floor($rand * (($max - $min) + 1));
+        
+            @return $randomNum;
+        }
+      
+        
+      animation-name: blink;
+      animation-duration: #{randomNum(0.95, 1.05)}s;
+      animation-iteration-count: infinite;
+
+      @keyframes blink {
+        from, to {
+            color: transparent;
+          }
+          50% {
+            color: lime;
+          }
+        }     
+  }

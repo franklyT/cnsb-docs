@@ -1,0 +1,43 @@
+.container {
+  color: black;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  flex-basis: 100%;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.beltsContainer {
+  &:last-child {
+    margin-bottom: 20rem;
+  }
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.rowItem {
+  flex-basis: 46%;
+
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen and (max-width: 1400px) {
+    flex-basis: 80%;
+  }
+}
+
+.card {
+  border-bottom: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  
+}
+
+.example {
+  background-color: transparent;
+}

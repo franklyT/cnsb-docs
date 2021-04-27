@@ -1,0 +1,17 @@
+.container {
+    min-height: 100%;
+    margin-left: 10%;
+    position: relative;
+
+    background-image: url("../shared/images/root/dojo_dashboard-black.svg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+
+
+    // Media queries for sidebar calc
+    @media screen and (min-width: 600px) {
+      margin-left: 220px;
+    }
+  }
+  
