@@ -1,0 +1,50 @@
+.sidebar {
+  background-color: #1ba0e1;
+  color: white;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 3;
+  height: 100%;
+  width: 10%;
+  padding-right: 1rem;
+  box-shadow: -1px 0 0 0 var(--gray100) inset;
+  overflow-x: hidden;
+  border-right: 1px solid rgb(210, 210, 210);
+  padding-top: 2rem;
+  font-size: 0.9rem;
+
+  @media screen and (min-width: 600px) {
+    width: 220px;
+  }
+
+  /* width */
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    visibility: hidden;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: rgb(30, 100, 200);
+    border: 4px solid transparent;
+    border-radius: 8px;
+    visibility: hidden;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgb(130, 130, 130);
+  }
+
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      visibility: visible;
+    }
+  }
+}

@@ -1,0 +1,22 @@
+.header {
+    text-align: right;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: fit-content;
+    background-color: rgb(250, 250, 250);
+    box-shadow: 0 4px 8px -7px #222;
+    margin-bottom: 2rem;
+}
+
+.banner {
+    margin-left: auto;
+    user-select: none;
+    width: 15rem;
+    margin-right: 3rem;
+    margin-top: 0.6rem;
+}
+
+.placeholder {
+    min-height: 2.8rem;
+}
