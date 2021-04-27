@@ -29,7 +29,9 @@ ___
 
 This is the shorthand used to format an intra-doc link to other elements: link:createTimer
 
+
 This one doesn't do anything because the String() doesn't match with any element metadata: link:String()
+
 
 [Of course, you can still use markdown to generate external links, too](https://stackoverflow.com/)
 
@@ -54,10 +56,13 @@ Some HTML alternatives to markdown:
 
 <i> Italic. </i> or <span style="font-style: italic;"> Italic. </span>
 
+<!-- Using text-align is better practice -->
 <center> Centered text </center>
+<p style="text-align: center;"> or </p>
+<p style="text-align: center;"> Centered text </p>
 
 <style>
-@keyframes card_template_blink {
+@keyframes template_blink {
   0% {
     opacity: 1;
   }
@@ -67,14 +72,14 @@ Some HTML alternatives to markdown:
   }
 }
 
-.card_template_blinker {
-  animation: card_template_blink 1s linear alternate infinite;
+.template_blinker {
+  animation: template_blink 1s linear alternate infinite;
   text-align: center;
 }
 </style>
 
 <br>
-<div class="card_template_blinker"> You could even use CSS classes... but probably don't do that. If you do, please prepend the class name with your file name. </div>
+<div class="template_blinker"> You could even use CSS classes... but probably don't do that. If you do, please prepend the class name with your file name, excepted characters like "$", which aren't valid within class names. </div>
 <br>
 
 <script>
@@ -131,12 +136,12 @@ if (1 + 1 === 2) {
   "It is!"
 ```
 
-Inline styling, that will apply a code tag and a code-friendly can be accessed merely by providing no tags to your code block, like so:
+Inline styling, that will apply a code tag and a code-friendly font can be accessed merely by providing no tags to your code block, like so:
 
  ```$this.red = orange;```
 
 
-If providing code examples, try to keep them short, but stick to the code conventions of the GDP, e.g. avoid using ES6 and even ES5 features, such as using var instead of let or const, and definitely avoid functional programming.
+If providing code examples, try to keep them short, but stick to the code conventions of the GDP, e.g. avoid using ES6 and even ES5 features, such as using ```var``` instead of ```let``` or ```const```, and definitely avoid functional programming.
 
 
 __Bad__:
@@ -165,3 +170,6 @@ newMessage;
 ```
 
 This may feel counter-intuitive, but keeping to a consistent style is important!
+
+
+That's it! Feel free to not follow these rules exactly: this can always be fixed later! Don't let the perfect be the enemy of the good!
