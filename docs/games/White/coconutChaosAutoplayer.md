@@ -20,7 +20,7 @@ if (ninjas.x() > 700) {
     ninjas.direction = "LEFT";
 }
 
-// Checks to see if the ninja is on the far right of the screen
+// Checks to see if the ninja is on the far left of the screen
 // if so, set the direction to right
 else if (ninjas.x() < 0) {
     ninjas.direction = "RIGHT";
