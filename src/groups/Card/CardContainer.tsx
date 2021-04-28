@@ -6,12 +6,13 @@ const methodImports = importFolder(require.context('./../../../docs/methods/', t
 const conceptImports = importFolder(require.context('./../../../docs/concepts/', true, /\.md/));
 const gameImports = importFolder(require.context('./../../../docs/games/', true, /\.md/));
 
-const CardComponent = React.lazy(()=> import("./CardComponent"));
+const CardComponent = React.lazy(() => import("./CardComponent"));
 
 export function CardContainer() {
     const [methodState, setMethodState] = useState(({} as any));
     const [conceptState, setConceptState] = useState(({} as any));
     const [gameState, setGameState] = useState(({} as any));
+
     const linkedCard = window.location.href.substring(window.location.href.indexOf('#') + 1, window.location.href.length);
 
     // add loader
@@ -37,7 +38,7 @@ export function CardContainer() {
                 .then(text => parseMarkdown(belt.default, text)))))
             .then((res) => setGameState(res.map((res: any) => res.value)))
     }, []);
-    
+
     function parseMarkdown(url: string, text: string) {
         return {
             // TODO: indexOf/lastIndexOf might be able to replace expensive regex parses

@@ -144,7 +144,7 @@ export function Category(props: { sidebarRef: MutableRefObject<any> }) {
                         method.default.indexOf(".")
                     );
 
-                    return <CategoryItem props={{ method: method }} />;
+                    return <CategoryItem props={{ method: method }} key={METHOD_TITLE} />;
                 })
                 }
             </div>
@@ -191,7 +191,7 @@ export function Category(props: { sidebarRef: MutableRefObject<any> }) {
 
                     if (Object.keys(markdownImports).length === 0) return;
 
-                    return <CategoryBelt props={{ name: name, markdownImports: markdownImports }} />
+                    return <CategoryBelt key={name} props={{ name: name, markdownImports: markdownImports }} />
                 })}
             </div>
         )
