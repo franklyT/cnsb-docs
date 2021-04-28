@@ -1,12 +1,14 @@
 import importFolder from "../../shared/utils/importFolder";
-import CardComponent from "./CardComponent";
+// import CardComponent from "./CardComponent";
 
 import React, { useEffect, useState } from 'react';
+import styles from './Card.module.scss';
 
 const methodImports = importFolder(require.context('./../../../docs/methods/', true, /\.md/));
 const conceptImports = importFolder(require.context('./../../../docs/concepts/', true, /\.md/));
 const gameImports = importFolder(require.context('./../../../docs/games/', true, /\.md/));
 
+const CardComponent = React.lazy(()=> import("./CardComponent"));
 
 export function CardContainer() {
     const [methodState, setMethodState] = useState(({} as any));
@@ -50,8 +52,10 @@ export function CardContainer() {
         }
     }
 
+    const Loading = () => <div className={styles.loaderC}> <div className={styles.loader} /> </div>;
+
     return (
-        <>
+        <React.Suspense fallback={<Loading />}>
             {Object.values(conceptState).sort().map((res: any) => {
                 return <CardComponent key={res.id} props={{ markdownObj: res, linkedCard: linkedCard }} />;
             })}
@@ -61,7 +65,7 @@ export function CardContainer() {
             {Object.values(gameState).sort().map((res: any) => {
                 return <CardComponent key={res.id} props={{ markdownObj: res, linkedCard: linkedCard }} />;
             })}
-        </>
+        </React.Suspense>
     )
 
 }

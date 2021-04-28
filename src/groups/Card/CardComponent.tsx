@@ -20,15 +20,15 @@ export function CardComponent(props: CardComponentInterface) {
     const { id, copy, example } = markdownObj;
 
     return (
-        <div className={styles.container}>
-            <div id={id} ref={myRef} className={styles.row}>
-                <div style={{ width: "80%", flexDirection: "column", flexBasis: "80%", marginLeft: "auto", marginRight: "auto", alignSelf: "center", justifySelf: "center", alignContent: "center", justifyContent: "center", alignItems: "center", justifyItems: 'center' }}>
-                    <HeadContainer markdownObj={markdownObj} />
-                    <CopyContainer copy={copy} />
-                    <ExampleContainer example={example} />
+            <div className={styles.container}>
+                <div id={id} ref={myRef} className={styles.row}>
+                    <div style={{ width: "80%", flexDirection: "column", flexBasis: "80%", marginLeft: "auto", marginRight: "auto", alignSelf: "center", justifySelf: "center", alignContent: "center", justifyContent: "center", alignItems: "center", justifyItems: 'center' }}>
+                        <HeadContainer markdownObj={markdownObj} />
+                        <CopyContainer copy={copy} />
+                        <ExampleContainer example={example} />
+                    </div>
                 </div>
             </div>
-        </div>
     )
 }
 
