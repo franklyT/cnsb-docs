@@ -1,8 +1,6 @@
 import useScrollPosition from '@react-hook/window-scroll'
 import React, { MutableRefObject, useContext, useEffect, useRef, useState } from "react";
 
-import { hashString } from '../../../shared/utils/hash';
-
 import styles from './Category.module.scss';
 import importFolder from "../../../shared/utils/importFolder";
 import SearchContext from '../SearchContext';
@@ -52,7 +50,7 @@ export function Category(props: { sidebarRef: MutableRefObject<any> }) {
 
         // update url
         window.history.pushState("object or string", "Title", `/#${activeElm.id}`);
-        
+
         return document.getElementById((`link_${(activeElm as any)!.id.replace('card_', '')}`));
     }
 
@@ -131,11 +129,11 @@ export function Category(props: { sidebarRef: MutableRefObject<any> }) {
     const CategoryBelt = (props: any) => {
         // extract
         const [beltIsCollapsed, setBeltIsCollapsed] = useState(false);
-        const {name, markdownImports} = props.props;
+        const { name, markdownImports } = props.props;
 
         return (
             <div className={`${styles.sidebarItem} ${styles.sidebarItemCategory} ${beltIsCollapsed ? styles.sidebarItemCategoryActive : ""}`}>
-                <p className={`${styles.sidebarItem} ${styles.sidebarItemCategory}`} onClick={() => setBeltIsCollapsed(!beltIsCollapsed)}> 
+                <p className={`${styles.sidebarItem} ${styles.sidebarItemCategory}`} onClick={() => setBeltIsCollapsed(!beltIsCollapsed)}>
                     {name}
                     <span> {'>'} </span>
                 </p>
@@ -146,7 +144,7 @@ export function Category(props: { sidebarRef: MutableRefObject<any> }) {
                         method.default.indexOf(".")
                     );
 
-                    return <CategoryItem props={{method: method}} />;
+                    return <CategoryItem props={{ method: method }} />;
                 })
                 }
             </div>
@@ -154,7 +152,7 @@ export function Category(props: { sidebarRef: MutableRefObject<any> }) {
     }
 
     const CategoryItem = (props: any) => {
-        const {method} = props.props;
+        const { method } = props.props;
 
         const METHOD_TITLE = method.default.substring(
             method.default.lastIndexOf("/") + 1,
@@ -165,14 +163,14 @@ export function Category(props: { sidebarRef: MutableRefObject<any> }) {
         if (searchValue && !METHOD_TITLE.toLowerCase().includes(searchValue)) return <></>;
 
         return (
-            <a className={styles.link} href={`#card_${METHOD_TITLE}`} key={hashString(METHOD_TITLE)} id={`link_${METHOD_TITLE}`}>
+            <a className={styles.link} href={`#card_${METHOD_TITLE}`} key={METHOD_TITLE} id={`link_${METHOD_TITLE}`}>
                 <div className={`${styles.sidebarItemContainer} ${activeElm === HASHED_ELM ? styles.activeElm : ''}`}>
                     <span className={`${styles.sidebarItem}`}>
                         {METHOD_TITLE}
                     </span>
                 </div>
             </a>
-        ) 
+        )
     }
 
     function Category(obj: any) {
@@ -181,19 +179,19 @@ export function Category(props: { sidebarRef: MutableRefObject<any> }) {
         const [isCollapsed, setIsCollapsed] = useState(false);
 
         return (
-                <div className={`${styles.sidebarItem} ${styles.sidebarItemCategory} ${isCollapsed ? styles.sidebarItemCategoryActive : ""}`}>
-                
-                <p className={`${styles.sidebarCategory}`} onClick={() => setIsCollapsed(!isCollapsed)}> 
-                    {category} 
+            <div className={`${styles.sidebarItem} ${styles.sidebarItemCategory} ${isCollapsed ? styles.sidebarItemCategoryActive : ""}`}>
+
+                <p className={`${styles.sidebarCategory}`} onClick={() => setIsCollapsed(!isCollapsed)}>
+                    {category}
                     <span className={`${styles.caret} ${isCollapsed ? styles.caretRotated : ''}`}> {'>'} </span>
                 </p>
 
                 {Object.values(obj).filter(method => method !== category).map((method: any) => {
                     const { name, markdownImports } = method;
 
-                    if (Object.keys(markdownImports).length === 0 ) return;
+                    if (Object.keys(markdownImports).length === 0) return;
 
-                    return <CategoryBelt props={{name: name, markdownImports: markdownImports}} />
+                    return <CategoryBelt props={{ name: name, markdownImports: markdownImports }} />
                 })}
             </div>
         )
@@ -201,9 +199,9 @@ export function Category(props: { sidebarRef: MutableRefObject<any> }) {
 
     return (
         <>
-            { Category(concepts) }
-            { Category(methods) }
-            { Category(games) }
+            { Category(concepts)}
+            { Category(methods)}
+            { Category(games)}
         </>
     )
 }
