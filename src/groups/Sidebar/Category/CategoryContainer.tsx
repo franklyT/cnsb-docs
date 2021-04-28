@@ -9,12 +9,18 @@ import SearchContext from '../SearchContext';
 
 const whiteMethodImports = importFolder(require.context('../../../../docs/methods/White', false, /\.md/));
 const yellowMethodImports = importFolder(require.context('../../../../docs/methods/Yellow', false, /\.md/));
+const orangeMethodImports = importFolder(require.context('../../../../docs/methods/Orange', false, /\.md/));
+const greenMethodImports = importFolder(require.context('../../../../docs/methods/Green', false, /\.md/));
 
 const whiteConceptImports = importFolder(require.context('../../../../docs/concepts/White', false, /\.md/));
 const yellowConceptImports = importFolder(require.context('../../../../docs/concepts/Yellow', false, /\.md/));
+const orangeConceptImports = importFolder(require.context('../../../../docs/concepts/Orange', false, /\.md/));
+const greenConceptImports = importFolder(require.context('../../../../docs/concepts/Green', false, /\.md/));
 
 const whiteGamesImports = importFolder(require.context('../../../../docs/games/White', false, /\.md/));
 const yellowGamesImports = importFolder(require.context('../../../../docs/games/Yellow', false, /\.md/));
+const orangeGamesImports = importFolder(require.context('../../../../docs/games/Orange', false, /\.md/));
+const greenGamesImports = importFolder(require.context('../../../../docs/games/Green', false, /\.md/));
 
 export function Category(props: { sidebarRef: MutableRefObject<any> }) {
     const { sidebarRef } = props;
@@ -71,6 +77,14 @@ export function Category(props: { sidebarRef: MutableRefObject<any> }) {
         yellow: {
             name: "Yellow",
             markdownImports: yellowConceptImports
+        },
+        orange: {
+            name: "Orange",
+            markdownImports: orangeConceptImports
+        },
+        green: {
+            name: "Green",
+            markdownImports: greenConceptImports
         }
     }
 
@@ -83,6 +97,14 @@ export function Category(props: { sidebarRef: MutableRefObject<any> }) {
         yellow: {
             name: "Yellow",
             markdownImports: yellowMethodImports
+        },
+        orange: {
+            name: "Orange",
+            markdownImports: orangeMethodImports
+        },
+        green: {
+            name: "Green",
+            markdownImports: greenMethodImports
         }
     }
 
@@ -95,27 +117,37 @@ export function Category(props: { sidebarRef: MutableRefObject<any> }) {
         yellow: {
             name: "Yellow",
             markdownImports: yellowGamesImports
-        }
+        },
+        orange: {
+            name: "Orange",
+            markdownImports: orangeGamesImports
+        },
+        green: {
+            name: "Green",
+            markdownImports: greenGamesImports
+        },
     }
 
     function Category(obj: any) {
         const { category } = obj;
         const ref = useRef((null as any));
 
-        const [uS, suS] = useState(false);
+        const [isCollapsed, setIsCollapsed] = useState(false);
 
 
         return (
-                <div ref={ref} className={`${styles.sidebarItem} ${styles.sidebarItemCategory} ${uS ? styles.sidebarItemCategoryActive : ""}`}>
+                <div ref={ref} className={`${styles.sidebarItem} ${styles.sidebarItemCategory} ${isCollapsed ? styles.sidebarItemCategoryActive : ""}`}>
                 
-                <p className={`${styles.sidebarCategory}`} onClick={() => suS(!uS)}> 
+                <p className={`${styles.sidebarCategory}`} onClick={() => setIsCollapsed(!isCollapsed)}> 
                     {category} 
-                    <span className={`${styles.caret} ${uS ? styles.caretRotated : ''}`}> {'>'} </span>
+                    <span className={`${styles.caret} ${isCollapsed ? styles.caretRotated : ''}`}> {'>'} </span>
                 </p>
 
                 {Object.values(obj).filter(method => method !== category).map((method: any) => {
                     const { name, markdownImports } = method;
 
+                    if (Object.keys(markdownImports).length === 0 ) return;
+                    
                     return (
                         <>
                             <p className={`${styles.sidebarItem} ${styles.sidebarItemCategory}`}> {name} </p>
