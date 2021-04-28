@@ -12,6 +12,7 @@ if ($this.isTouching(ball)) {
     lblScore.text(parseInt($this.scene.score));
 }
 ```
+
 ```gdp:05-04_Wall_Blaster:initializeWhenSceneStarts
 if ($this.scene.state() == "PLAY") {
     var brickX = 4;
@@ -21,15 +22,17 @@ if ($this.scene.state() == "PLAY") {
     // This nested for loop produces a "grid". How?
     // The outer loop represents the rows, and the inner loop represents the columns!
     // For every "row", 9 columns, or bricks, are created. Then, the process repeats.
-    
+
     for (var rowCount = 0; rowCount <= 3; rowCount++) {
         for (var brickCount = 0; brickCount <= 9; brickCount++) {
             var nBrick = brick.clone();
-            nBrick.fill(`rgb(${random(0, 255)}, ${random(0, 255)}, ${random(0, 255)})`);
+
+            // This gives us a random color using the RGB syntax.
+            nBrick.fill(`rgb(${Math.round(random(0, 255))}, ${Math.round(random(0, 255))}, ${Math.round(random(0, 255))})`);
             nBrick.x((brickX) + (80*brickCount));
             nBrick.y(brickY);
         }
         brickY -= 40;
     }
-}```
-
+}
+```
