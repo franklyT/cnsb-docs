@@ -4,9 +4,14 @@ import CardComponent from "./CardComponent";
 import React, { useEffect, useState } from 'react';
 
 const methodImports = importFolder(require.context('./../../../docs/methods/', true, /\.md/));
+const conceptImports = importFolder(require.context('./../../../docs/concepts/', true, /\.md/));
+const gameImports = importFolder(require.context('./../../../docs/games/', true, /\.md/));
+
 
 export function CardContainer() {
-    const [cardState, setCardState] = useState(({} as any));
+    const [methodState, setMethodState] = useState(({} as any));
+    const [conceptState, setConceptState] = useState(({} as any));
+    const [gameState, setGameState] = useState(({} as any));
     const linkedCard = window.location.href.substring(window.location.href.indexOf('#') + 1, window.location.href.length);
 
     // add loader
@@ -14,9 +19,25 @@ export function CardContainer() {
         Promise.allSettled(
             Object.values(methodImports).map((belt: any) => fetch(/*url*/ belt.default).then(response => response.text()
                 .then(text => parseMarkdown(belt.default, text)))))
-            .then((res) => setCardState(res.map((res: any) => res.value)))
+            .then((res) => setMethodState(res.map((res: any) => res.value)))
     }, []);
 
+    // add loader
+    useEffect(() => {
+        Promise.allSettled(
+            Object.values(conceptImports).map((belt: any) => fetch(/*url*/ belt.default).then(response => response.text()
+                .then(text => parseMarkdown(belt.default, text)))))
+            .then((res) => setConceptState(res.map((res: any) => res.value)))
+    }, []);
+
+    // add loader
+    useEffect(() => {
+        Promise.allSettled(
+            Object.values(gameImports).map((belt: any) => fetch(/*url*/ belt.default).then(response => response.text()
+                .then(text => parseMarkdown(belt.default, text)))))
+            .then((res) => setGameState(res.map((res: any) => res.value)))
+    }, []);
+    
     function parseMarkdown(url: string, text: string) {
         return {
             // TODO: indexOf/lastIndexOf might be able to replace expensive regex parses
@@ -31,7 +52,13 @@ export function CardContainer() {
 
     return (
         <>
-            {Object.values(cardState).sort().map((res: any) => {
+            {Object.values(conceptState).sort().map((res: any) => {
+                return <CardComponent key={res.id} props={{ markdownObj: res, linkedCard: linkedCard }} />;
+            })}
+            {Object.values(methodState).sort().map((res: any) => {
+                return <CardComponent key={res.id} props={{ markdownObj: res, linkedCard: linkedCard }} />;
+            })}
+            {Object.values(gameState).sort().map((res: any) => {
                 return <CardComponent key={res.id} props={{ markdownObj: res, linkedCard: linkedCard }} />;
             })}
         </>

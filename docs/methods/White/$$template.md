@@ -141,7 +141,7 @@ Inline styling, that will apply a code tag and a code-friendly font can be acces
  ```$this.red = orange;```
 
 
-If providing code examples, try to keep them short, but stick to the code conventions of the GDP, e.g. avoid using ES6 and even ES5 features, such as using ```var``` instead of ```let``` or ```const```, and definitely avoid functional programming.
+If providing code examples, try to keep them short, but stick to the code conventions of the GDP, e.g. avoid using [ES6](https://262.ecma-international.org/6.0/) and even [ES5](https://262.ecma-international.org/5.1/) features, such as using ```var``` instead of ```let``` or ```const```, and definitely avoid functional programming.
 
 
 __Bad__:
