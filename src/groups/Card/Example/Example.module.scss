@@ -33,7 +33,7 @@
             @return $randomNum;
         }
       
-        
+      position: absolute;
       animation-name: blink;
       animation-duration: #{randomNum(0.95, 1.05)}s;
       animation-iteration-count: infinite;

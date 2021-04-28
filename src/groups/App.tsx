@@ -4,6 +4,8 @@ import CardContainer from './Card/CardContainer';
 
 import styles from './App.module.scss';
 
+// Add react-window
+
 function App() {
   return (
     <div className={styles.container}>
