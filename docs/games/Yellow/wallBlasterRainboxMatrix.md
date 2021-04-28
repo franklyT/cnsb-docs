@@ -18,6 +18,10 @@ if ($this.scene.state() == "PLAY") {
     var brickY = 150;
     $this.score = 0;
     
+    // This nested for loop produces a "grid". How?
+    // The outer loop represents the rows, and the inner loop represents the columns!
+    // For every "row", 9 columns, or bricks, are created. Then, the process repeats.
+    
     for (var rowCount = 0; rowCount <= 3; rowCount++) {
         for (var brickCount = 0; brickCount <= 9; brickCount++) {
             var nBrick = brick.clone();
