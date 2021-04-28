@@ -5,20 +5,20 @@ import styles from './Category.module.scss';
 import importFolder from "../../../shared/utils/importFolder";
 import SearchContext from '../SearchContext';
 
-const whiteMethodImports = importFolder(require.context('../../../../docs/methods/White', false, /\.md/));
-const yellowMethodImports = importFolder(require.context('../../../../docs/methods/Yellow', false, /\.md/));
-const orangeMethodImports = importFolder(require.context('../../../../docs/methods/Orange', false, /\.md/));
-const greenMethodImports = importFolder(require.context('../../../../docs/methods/Green', false, /\.md/));
+const whiteGdpImports = importFolder(require.context('../../../../docs/gdp/White', false, /\.md/));
+const yellowGdpImports = importFolder(require.context('../../../../docs/gdp/Yellow', false, /\.md/));
+const orangeGdpImports = importFolder(require.context('../../../../docs/gdp/Orange', false, /\.md/));
+const greenGdpImports = importFolder(require.context('../../../../docs/gdp/Green', false, /\.md/));
 
 const whiteConceptImports = importFolder(require.context('../../../../docs/concepts/White', false, /\.md/));
 const yellowConceptImports = importFolder(require.context('../../../../docs/concepts/Yellow', false, /\.md/));
 const orangeConceptImports = importFolder(require.context('../../../../docs/concepts/Orange', false, /\.md/));
 const greenConceptImports = importFolder(require.context('../../../../docs/concepts/Green', false, /\.md/));
 
-const whiteGamesImports = importFolder(require.context('../../../../docs/games/White', false, /\.md/));
-const yellowGamesImports = importFolder(require.context('../../../../docs/games/Yellow', false, /\.md/));
-const orangeGamesImports = importFolder(require.context('../../../../docs/games/Orange', false, /\.md/));
-const greenGamesImports = importFolder(require.context('../../../../docs/games/Green', false, /\.md/));
+const whiteExampleGameImports = importFolder(require.context('../../../../docs/exampleGames/White', false, /\.md/));
+const yellowExampleGameImports = importFolder(require.context('../../../../docs/exampleGames/Yellow', false, /\.md/));
+const orangeExampleGameImports = importFolder(require.context('../../../../docs/exampleGames/Orange', false, /\.md/));
+const greenExampleGameImports = importFolder(require.context('../../../../docs/exampleGames/Green', false, /\.md/));
 
 export function Category(props: { sidebarRef: MutableRefObject<any> }) {
     const { sidebarRef } = props;
@@ -86,43 +86,43 @@ export function Category(props: { sidebarRef: MutableRefObject<any> }) {
         }
     }
 
-    const methods = {
-        category: "Methods",
+    const GDP = {
+        category: "GDP",
         white: {
             name: "White",
-            markdownImports: whiteMethodImports
+            markdownImports: whiteGdpImports
         },
         yellow: {
             name: "Yellow",
-            markdownImports: yellowMethodImports
+            markdownImports: yellowGdpImports
         },
         orange: {
             name: "Orange",
-            markdownImports: orangeMethodImports
+            markdownImports: orangeGdpImports
         },
         green: {
             name: "Green",
-            markdownImports: greenMethodImports
+            markdownImports: greenGdpImports
         }
     }
 
-    const games = {
-        category: "Games",
+    const exampleGames = {
+        category: "Examle Games",
         white: {
             name: "White",
-            markdownImports: whiteGamesImports
+            markdownImports: whiteExampleGameImports
         },
         yellow: {
             name: "Yellow",
-            markdownImports: yellowGamesImports
+            markdownImports: yellowExampleGameImports
         },
         orange: {
             name: "Orange",
-            markdownImports: orangeGamesImports
+            markdownImports: orangeExampleGameImports
         },
         green: {
             name: "Green",
-            markdownImports: greenGamesImports
+            markdownImports: greenExampleGameImports
         },
     }
 
@@ -199,9 +199,9 @@ export function Category(props: { sidebarRef: MutableRefObject<any> }) {
 
     return (
         <>
-            { Category(concepts)}
-            { Category(methods)}
-            { Category(games)}
+            { Category(GDP) }
+            { Category(concepts) }
+            { Category(exampleGames) }
         </>
     )
 }

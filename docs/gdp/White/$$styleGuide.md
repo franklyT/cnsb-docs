@@ -1,4 +1,4 @@
-// @title $$template
+// @title $$styleGuide
 
 This metadata tag, @title, is used to explicitly declare the title of the element, which is used as the title of the element in the doc and the sidebar, and internally to generate links.
 
@@ -62,7 +62,7 @@ Some HTML alternatives to markdown:
 <p style="text-align: center;"> Centered text </p>
 
 <style>
-@keyframes template_blink {
+@keyframes styleGuide_blink {
   0% {
     opacity: 1;
   }
@@ -72,14 +72,14 @@ Some HTML alternatives to markdown:
   }
 }
 
-.template_blinker {
-  animation: template_blink 1s linear alternate infinite;
+.styleGuide_blinker {
+  animation: styleGuide_blink 1s linear alternate infinite;
   text-align: center;
 }
 </style>
 
 <br>
-<div class="template_blinker"> You could even use CSS classes... but probably don't do that. If you do, please prepend the class name with your file name, excepted characters like "$", which aren't valid within class names. </div>
+<div class="styleGuide_blinker"> You could even use CSS classes... but probably don't do that. If you do, please prepend the class name with your file name, excepted characters like "$", which aren't valid within class names. </div>
 <br>
 
 <script>

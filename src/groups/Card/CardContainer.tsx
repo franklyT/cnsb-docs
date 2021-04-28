@@ -2,23 +2,23 @@ import importFolder from "../../shared/utils/importFolder";
 import React, { useEffect, useState } from 'react';
 import styles from './Card.module.scss';
 
-const methodImports = importFolder(require.context('./../../../docs/methods/', true, /\.md/));
+const gdpImports = importFolder(require.context('./../../../docs/gdp/', true, /\.md/));
 const conceptImports = importFolder(require.context('./../../../docs/concepts/', true, /\.md/));
-const gameImports = importFolder(require.context('./../../../docs/games/', true, /\.md/));
+const exampleGameImports = importFolder(require.context('./../../../docs/exampleGames/', true, /\.md/));
 
 const CardComponent = React.lazy(() => import("./CardComponent"));
 
 export function CardContainer() {
-    const [methodState, setMethodState] = useState(({} as any));
+    const [gdpState, setMethodState] = useState(({} as any));
     const [conceptState, setConceptState] = useState(({} as any));
-    const [gameState, setGameState] = useState(({} as any));
+    const [exampleGameState, setGameState] = useState(({} as any));
 
     const linkedCard = window.location.href.substring(window.location.href.indexOf('#') + 1, window.location.href.length);
 
     // add loader
     useEffect(() => {
         Promise.allSettled(
-            Object.values(methodImports).map((belt: any) => fetch(/*url*/ belt.default).then(response => response.text()
+            Object.values(gdpImports).map((belt: any) => fetch(/*url*/ belt.default).then(response => response.text()
                 .then(text => parseMarkdown(belt.default, text)))))
             .then((res) => setMethodState(res.map((res: any) => res.value)))
     }, []);
@@ -34,7 +34,7 @@ export function CardContainer() {
     // add loader
     useEffect(() => {
         Promise.allSettled(
-            Object.values(gameImports).map((belt: any) => fetch(/*url*/ belt.default).then(response => response.text()
+            Object.values(exampleGameImports).map((belt: any) => fetch(/*url*/ belt.default).then(response => response.text()
                 .then(text => parseMarkdown(belt.default, text)))))
             .then((res) => setGameState(res.map((res: any) => res.value)))
     }, []);
@@ -55,13 +55,13 @@ export function CardContainer() {
 
     return (
         <React.Suspense fallback={<Loading />}>
+            {Object.values(gdpState).sort().map((res: any) => {
+                return <CardComponent key={res.id} props={{ markdownObj: res, linkedCard: linkedCard }} />;
+            })}
             {Object.values(conceptState).sort().map((res: any) => {
                 return <CardComponent key={res.id} props={{ markdownObj: res, linkedCard: linkedCard }} />;
             })}
-            {Object.values(methodState).sort().map((res: any) => {
-                return <CardComponent key={res.id} props={{ markdownObj: res, linkedCard: linkedCard }} />;
-            })}
-            {Object.values(gameState).sort().map((res: any) => {
+            {Object.values(exampleGameState).sort().map((res: any) => {
                 return <CardComponent key={res.id} props={{ markdownObj: res, linkedCard: linkedCard }} />;
             })}
         </React.Suspense>
