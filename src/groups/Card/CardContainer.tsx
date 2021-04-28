@@ -1,6 +1,4 @@
 import importFolder from "../../shared/utils/importFolder";
-// import CardComponent from "./CardComponent";
-
 import React, { useEffect, useState } from 'react';
 import styles from './Card.module.scss';
 
