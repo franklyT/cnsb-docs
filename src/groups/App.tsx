@@ -1,4 +1,3 @@
-import './App.module.scss';
 import HeaderComponent from './Header/HeaderComponent';
 import Sidebar from "./Sidebar/SidebarComponent";
 import CardContainer from './Card/CardContainer';
