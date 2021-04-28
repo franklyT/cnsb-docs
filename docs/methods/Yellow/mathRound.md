@@ -5,6 +5,9 @@ Accepts a number value as an argument, returning the value of that number rounde
 
 // @example
 ```javascript
-Math.round(10.4); // -> 10
-Math.round(10.6); // -> 11
+Math.round(10.4);
+Math.round(10.6);
+```
+```shell
+10 11
 ```

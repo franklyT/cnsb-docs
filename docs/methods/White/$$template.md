@@ -133,7 +133,7 @@ if (1 + 1 === 2) {
 }
 ```
 ```shell
-  "It is!"
+"It is!"
 ```
 
 Inline styling, that will apply a code tag and a code-friendly font can be accessed merely by providing no tags to your code block, like so:

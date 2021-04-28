@@ -5,5 +5,8 @@ Accepts a number value as an argument, always returning the value of that number
 
 // @example
 ```javascript
-Math.floor(10.9); // -> 10
+Math.floor(10.9);
+```
+```shell
+10
 ```

@@ -49,7 +49,7 @@ export function ExampleContainer(props: ExampleContainerInterface) {
 
             const isShell = !match || !match[1].includes('shell') ? false : true;
 
-            if (isShell) return <code className={styles.shell}> {"-> Output: " + String(children).trim()}<span className={styles.shellCaret}>_</span> </code>;
+            if (isShell) return <code className={styles.shell}> {"-> Output: " + String(children).replace(/\s+$/, '')}<span className={styles.shellCaret}>_</span> </code>;
 
             if (!inline && match) return (
                 <>
