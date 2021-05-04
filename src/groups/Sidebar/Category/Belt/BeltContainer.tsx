@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
-import styles from "../Category.module.scss";
 import { BeltItemContainer } from './BeltItemContainer';
+
+import styles from "./Belt.module.scss";
 
 export function BeltContainer(props: any) {
         const [beltIsCollapsed, setBeltIsCollapsed] = useState(false);

@@ -29,20 +29,6 @@
     transition: max-height 0.2s ease-out;
 }
 
-.activeElm {
-    height: fit-content;
-    color: rgb(30, 130, 170);
-    background-color: rgb(100, 200, 255);
-    border-top-right-radius: 0.5rem;
-    border-bottom-right-radius: 0.5rem;
-    // padding-top: 0.4rem;
-    // padding-bottom: 0.4rem;
-}
-
-.link {
-    text-decoration: none;
-    color: white;
-}
 
 .caret {
     font-family: monospace;
