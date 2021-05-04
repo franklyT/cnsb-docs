@@ -18,7 +18,7 @@ export function BeltContainer(props: any) {
                         method.default.indexOf(".")
                     );
 
-                    return <CategoryItem props={{ method: metho }} key={METHOD_TITLE} />;
+                    return <CategoryItem props={{ method: method }} key={METHOD_TITLE} />;
                 })
                 }
             </div>
