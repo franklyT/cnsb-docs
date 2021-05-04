@@ -25,7 +25,6 @@ export function Category(props: { sidebarRef: MutableRefObject<any> }) {
     const scrollY = useScrollPosition(3); /* 3 FPS is mostly sufficient and relatively low-impact on the CPU */
     const [activeElm, setActiveCard] = useState((null as any));
     const [activeLink, setActiveLink] = useState((null as any));
-    const { searchValue } = useContext(SearchContext);
 
     function getActiveCard() {
         // This function is optimized for raw speed, and will look a bit wonky
@@ -124,53 +123,6 @@ export function Category(props: { sidebarRef: MutableRefObject<any> }) {
             name: "Green",
             markdownImports: greenExampleGameImports
         },
-    }
-
-    const CategoryBelt = (props: any) => {
-        // extract
-        const [beltIsCollapsed, setBeltIsCollapsed] = useState(false);
-        const { name, markdownImports } = props.props;
-
-        return (
-            <div className={`${styles.sidebarItem} ${styles.sidebarItemCategory} ${beltIsCollapsed ? styles.sidebarItemCategoryActive : ""}`}>
-                <p className={`${styles.sidebarItem} ${styles.sidebarItemCategory}`} onClick={() => setBeltIsCollapsed(!beltIsCollapsed)}>
-                    {name}
-                    <span> {'>'} </span>
-                </p>
-
-                {Object.values(markdownImports).sort().map((method: any) => {
-                    const METHOD_TITLE = method.default.substring(
-                        method.default.lastIndexOf("/") + 1,
-                        method.default.indexOf(".")
-                    );
-
-                    return <CategoryItem props={{ method: method }} key={METHOD_TITLE} />;
-                })
-                }
-            </div>
-        )
-    }
-
-    const CategoryItem = (props: any) => {
-        const { method } = props.props;
-
-        const METHOD_TITLE = method.default.substring(
-            method.default.lastIndexOf("/") + 1,
-            method.default.indexOf(".")
-        );
-        const HASHED_ELM = document.getElementById(`card_${(METHOD_TITLE)}`);
-
-        if (searchValue && !METHOD_TITLE.toLowerCase().includes(searchValue)) return <></>;
-
-        return (
-            <a className={styles.link} href={`#card_${METHOD_TITLE}`} key={METHOD_TITLE} id={`link_${METHOD_TITLE}`}>
-                <div className={`${styles.sidebarItemContainer} ${activeElm === HASHED_ELM ? styles.activeElm : ''}`}>
-                    <span className={`${styles.sidebarItem}`}>
-                        {METHOD_TITLE}
-                    </span>
-                </div>
-            </a>
-        )
     }
 
     function Category(obj: any) {

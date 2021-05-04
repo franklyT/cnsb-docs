@@ -11,8 +11,7 @@ if ($this.scene.state() === "PLAY") {
 ```
 ```gdp:04-01_Coconut_Chaos:updateEveryFrame
 // Sets the base speed
-var speed = 3900;
-
+var speed = 4000;
 
 // Checks to see if the ninja is on the far right of the screen
 // if so, set the direction to left

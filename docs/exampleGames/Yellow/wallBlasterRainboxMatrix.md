@@ -12,7 +12,6 @@ if ($this.isTouching(ball)) {
     lblScore.text(parseInt($this.scene.score));
 }
 ```
-
 ```gdp:05-04_Wall_Blaster:initializeWhenSceneStarts
 if ($this.scene.state() == "PLAY") {
     var brickX = 4;
