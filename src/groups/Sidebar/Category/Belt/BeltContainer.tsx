@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import styles from "../Category.module.scss";
+import { BeltItemContainer } from './BeltItemContainer';
 
 export function BeltContainer(props: any) {
         const [beltIsCollapsed, setBeltIsCollapsed] = useState(false);
-        const { name, markdownImports } = props.props;
+        const { activeElm, name, markdownImports } = props.props;
 
         return (
             <div className={`${styles.sidebarItem} ${styles.sidebarItemCategory} ${beltIsCollapsed ? styles.sidebarItemCategoryActive : ""}`}>
@@ -18,7 +19,7 @@ export function BeltContainer(props: any) {
                         method.default.indexOf(".")
                     );
 
-                    return <CategoryItem props={{ method: method }} key={METHOD_TITLE} />;
+                    return <BeltItemContainer props={{ activeElm: activeElm, method: method }} key={METHOD_TITLE} />;
                 })
                 }
             </div>

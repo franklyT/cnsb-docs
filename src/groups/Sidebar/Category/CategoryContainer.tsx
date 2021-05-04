@@ -3,7 +3,7 @@ import React, { MutableRefObject, useContext, useEffect, useRef, useState } from
 
 import styles from './Category.module.scss';
 import importFolder from "../../../shared/utils/importFolder";
-import SearchContext from '../SearchContext';
+import { BeltContainer } from './Belt/BeltContainer';
 
 const whiteGdpImports = importFolder(require.context('../../../../docs/gdp/White', false, /\.md/));
 const yellowGdpImports = importFolder(require.context('../../../../docs/gdp/Yellow', false, /\.md/));
@@ -143,7 +143,7 @@ export function Category(props: { sidebarRef: MutableRefObject<any> }) {
 
                     if (Object.keys(markdownImports).length === 0) return;
 
-                    return <CategoryBelt key={name} props={{ name: name, markdownImports: markdownImports }} />
+                    return <BeltContainer key={name} props={{ activeElm: activeElm, name: name, markdownImports: markdownImports }} />
                 })}
             </div>
         )
