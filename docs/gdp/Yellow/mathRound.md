@@ -1,4 +1,4 @@
-// @title Math.floor
+// @title Math.floor()
 
 // @copy
 Accepts a number value as an argument, returning the value of that number rounded to the nearest whole number.

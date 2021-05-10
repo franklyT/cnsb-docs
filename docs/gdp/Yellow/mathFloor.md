@@ -1,4 +1,4 @@
-// @title Math.floor
+// @title Math.floor()
 
 // @copy
 Accepts a number value as an argument, always returning the value of that number rounded down.
