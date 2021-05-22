@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styles from './Header.module.scss';
 import banner from './images/cnsb-banner.png';
 
-export function HeaderComponent() {
+export function Header() {
     const [loaded, setLoaded] = useState(false);
 
     return (
@@ -15,4 +15,4 @@ export function HeaderComponent() {
     )
 }
 
-export default HeaderComponent;
+export default Header;

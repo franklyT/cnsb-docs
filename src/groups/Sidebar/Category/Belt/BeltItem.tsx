@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import styles from './BeltItem.module.scss';
 import SearchContext from "../../SearchContext";
 
-export function BeltItemContainer(props: any) {
+export function BeltItem(props: any) {
     const { activeElm, method } = props.props;
     const { searchValue } = useContext(SearchContext);
 
@@ -26,4 +26,4 @@ export function BeltItemContainer(props: any) {
     )
 }
 
-export default React.memo(BeltItemContainer);
+export default React.memo(BeltItem);

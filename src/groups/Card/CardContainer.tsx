@@ -2,42 +2,39 @@ import importFolder from "../../shared/utils/importFolder";
 import React, { useEffect, useState } from 'react';
 import styles from './Card.module.scss';
 
+// should just append to context rather than building twice
 const gdpImports = importFolder(require.context('./../../../docs/gdp/', true, /\.md/));
 const conceptImports = importFolder(require.context('./../../../docs/concepts/', true, /\.md/));
-const exampleGameImports = importFolder(require.context('./../../../docs/exampleGames/', true, /\.md/));
+const exampleGamesImports = importFolder(require.context('./../../../docs/exampleGames/', true, /\.md/));
 
 const CardComponent = React.lazy(() => import("./CardComponent"));
 
 export function CardContainer() {
     const [gdpState, setMethodState] = useState(({} as any));
-    const [conceptState, setConceptState] = useState(({} as any));
-    const [exampleGameState, setGameState] = useState(({} as any));
 
     const linkedCard = window.location.href.substring(window.location.href.indexOf('#') + 1, window.location.href.length);
 
-    // add loader
+    // need to reason out how to do this
     useEffect(() => {
-        Promise.allSettled(
-            Object.values(gdpImports).map((belt: any) => fetch(/*url*/ belt.default).then(response => response.text()
-                .then(text => parseMarkdown(belt.default, text)))))
-            .then((res) => setMethodState(res.map((res: any) => res.value)))
-    }, []);
+            Promise.allSettled(
+                Object.values(gdpImports).map((belt: any) => fetch(/*url*/ belt.default).then(response => response.text()
+                    .then(text => parseMarkdown(belt.default, text)))))
+                .then((res) => setMethodState(res.map((res: any) => res.value)))
+        }, []);
 
-    // add loader
-    useEffect(() => {
-        Promise.allSettled(
-            Object.values(conceptImports).map((belt: any) => fetch(/*url*/ belt.default).then(response => response.text()
-                .then(text => parseMarkdown(belt.default, text)))))
-            .then((res) => setConceptState(res.map((res: any) => res.value)))
-    }, []);
+        useEffect(() => {
+            Promise.allSettled(
+                Object.values(conceptImports).map((belt: any) => fetch(/*url*/ belt.default).then(response => response.text()
+                    .then(text => parseMarkdown(belt.default, text)))))
+                .then((res) => setMethodState(res.map((res: any) => res.value)))
+        }, []);
 
-    // add loader
-    useEffect(() => {
-        Promise.allSettled(
-            Object.values(exampleGameImports).map((belt: any) => fetch(/*url*/ belt.default).then(response => response.text()
-                .then(text => parseMarkdown(belt.default, text)))))
-            .then((res) => setGameState(res.map((res: any) => res.value)))
-    }, []);
+        useEffect(() => {
+            Promise.allSettled(
+                Object.values(exampleGamesImports).map((belt: any) => fetch(/*url*/ belt.default).then(response => response.text()
+                    .then(text => parseMarkdown(belt.default, text)))))
+                .then((res) => setMethodState(res.map((res: any) => res.value)))
+        }, []);
 
     function parseMarkdown(url: string, text: string) {
         return {
@@ -55,13 +52,7 @@ export function CardContainer() {
 
     return (
         <React.Suspense fallback={<Loading />}>
-            {Object.values(gdpState).sort().map((res: any) => {
-                return <CardComponent key={res.id} props={{ markdownObj: res, linkedCard: linkedCard }} />;
-            })}
-            {Object.values(conceptState).sort().map((res: any) => {
-                return <CardComponent key={res.id} props={{ markdownObj: res, linkedCard: linkedCard }} />;
-            })}
-            {Object.values(exampleGameState).sort().map((res: any) => {
+            {Object.values(gdpState).sort((a: any, b: any) => a.title.localeCompare(b.title, 'en', { numeric: true })).map((res: any) => {
                 return <CardComponent key={res.id} props={{ markdownObj: res, linkedCard: linkedCard }} />;
             })}
         </React.Suspense>

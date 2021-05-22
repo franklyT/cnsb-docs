@@ -1,10 +1,15 @@
 import React, { useEffect, useRef } from 'react';
 import styles from './Card.module.scss';
-import HeadContainer from './Head/HeadComponent';
-import CopyContainer from './Copy/CopyContainer';
-import ExampleContainer from './Example/ExampleContainer';
+import HeadContainer from './Head/Head';
+import CopyContainer from './Copy/Copy';
+import ExampleContainer from './Example/Example';
 
-import { CardComponentInterface } from './CardInterfaces';
+interface CardComponentInterface {
+    props: {
+        markdownObj: any;
+        linkedCard: any;
+    }
+}
 
 export function CardComponent(props: CardComponentInterface) {
     const { markdownObj, linkedCard } = props.props;

@@ -1,6 +1,6 @@
-import Category from './Category/CategoryContainer';
+import Category from './Category/Category';
 import { useRef, useState } from 'react';
-import { SearchContainer } from './Search/SearchContainer';
+import { Search } from './Search/Search';
 import { SearchContextProvider } from './SearchContext';
 
 import styles from './Sidebar.module.scss';
@@ -12,7 +12,7 @@ export function Sidebar() {
     return (
         <SearchContextProvider value={{searchValue, setSearchValue}}>
             <div className={styles.sidebar} ref={sidebarRef}>
-                <SearchContainer />
+                <Search />
                 <Category sidebarRef={sidebarRef} />
             </div>
         </SearchContextProvider>

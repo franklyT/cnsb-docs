@@ -1,5 +1,5 @@
-import HeaderComponent from './Header/HeaderComponent';
-import Sidebar from "./Sidebar/SidebarComponent";
+import { Header } from './Header/Header';
+import Sidebar from "./Sidebar/Sidebar";
 import CardContainer from './Card/CardContainer';
 
 import styles from './App.module.scss';
@@ -9,7 +9,7 @@ import styles from './App.module.scss';
 function App() {
   return (
     <div className={styles.container}>
-      <HeaderComponent />
+      <Header />
       <Sidebar />
       <CardContainer />
     </div>

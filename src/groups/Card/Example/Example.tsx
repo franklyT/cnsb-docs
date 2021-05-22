@@ -11,11 +11,13 @@ import styles from './Example.module.scss';
 
 import React from 'react';
 
-import { ExampleContainerInterface } from './ExampleInterfaces';
 import templateLinksFromMarkdown from '../../../shared/utils/templateLinksFromMarkdown';
 
+interface IExample {
+    example: string;
+}
 
-export function ExampleContainer(props: ExampleContainerInterface) {
+export function Example(props: IExample) {
     const example = templateLinksFromMarkdown(props.example);
 
     /* 
@@ -67,4 +69,4 @@ export function ExampleContainer(props: ExampleContainerInterface) {
     return <ReactMarkdown rehypePlugins={[rehypeRaw]} components={components} children={example} />;
 }
 
-export default React.memo(ExampleContainer);
+export default React.memo(Example);

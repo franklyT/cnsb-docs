@@ -3,9 +3,13 @@ import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/light-async";
 import { a11yDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 import styles from './Head.module.scss';
-import { HeadComponentInterface } from "./HeadInterfaces";
 
-export function HeadComponent(props: HeadComponentInterface) {
+
+export interface IHead {
+    markdownObj: any;
+}
+
+export function Head(props: IHead) {
     const { title } = props.markdownObj;
 
     return (
@@ -17,4 +21,4 @@ export function HeadComponent(props: HeadComponentInterface) {
     )
 }
 
-export default React.memo(HeadComponent);
+export default React.memo(Head);
